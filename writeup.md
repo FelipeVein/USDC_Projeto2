@@ -14,14 +14,16 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.jpg "Visualization"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[image1]: ./imagens_para_writeup/imagem1.jpg "Data before"
+[image2]: ./imagens_para_writeup/imagem2.jpg "Data after"
+[image3]: ./imagens_para_writeup/imagem3.jpg "Before"
+[image10]: ./imagens_para_writeup/imagem4.jpg "After"
+[image4]: ./imagens_para_teste/50.jpg "Traffic Sign 1"
+[image5]: ./imagens_para_teste/criancas.jpg "Traffic Sign 2"
+[image6]: ./imagens_para_teste/criancas2.jpg "Traffic Sign 3"
+[image7]: ./imagens_para_teste/curva_dir.jpg "Traffic Sign 4"
+[image8]: ./imagens_para_teste/curva_esq.jpg "Traffic Sign 5"
+[image9]: ./imagens_para_teste/pare.jpg "Traffic Sign 6"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -59,6 +61,7 @@ As a first step, I decided to augment the dataset because there are a lot of ima
 Here is an example of a traffic sign image before and after all this preprocessing techniques.
 
 ![alt text][image3]
+![alt text][image10]
 
 As a last step, I normalized the image data because the model learns better with zero mean and unit variance.
 
