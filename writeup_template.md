@@ -105,17 +105,29 @@ My final model results were:
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
+
 -- The first architecture chosen was the LeNet with coloured images, because I already had the pipeline for it. 
+
 * What were some problems with the initial architecture?
+
 -- The test accuracy was 90% at it's best.
+
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
+
 -- I read some papers in the field ([Pierre Sermanet and Yann LeCun](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf); [Zhe Zhu](http://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Zhu_Traffic-Sign_Detection_and_CVPR_2016_paper.pdf)), but I decided to change the first architecture a bit. I never changed the activation functions, because ReLU is considered the best choice nowadays. 
+
 -- I decided to add dropout layers because the model was overfitting sometimes, even with low epochs. 
+
 * Which parameters were tuned? How were they adjusted and why?
+
 -- The learning rate was decreased, because the model couldn't get 90%+ accuracy on the validation data.
+
 -- Epoch was increased.
+
 -- Batch size was increased to increase performance.
+
 -- Dropout was incresead, due to the 3 dropout layers. When dropout was lower, the model almost couldn't learn anything.
+
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
 
 If a well known architecture was chosen:
@@ -156,6 +168,7 @@ The code for making predictions on my final model is located in the 11th cell of
 
 Despite the 0% accuraccy, the coprrect label appears on all top 5 predictions, as we can see below.
 50 km/h
+
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | .86         			| 30 km/h   									| 
@@ -165,6 +178,7 @@ Despite the 0% accuraccy, the coprrect label appears on all top 5 predictions, a
 | .00004				    | Roundabout mandatory      							|
 
 Children Crossing
+
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | .81         			| Dangerous curve to the right   									| 
@@ -174,6 +188,7 @@ Children Crossing
 | .0049				    | Keep Right      							|
 
 Children Crossing
+
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | .36         			| Double Curve   									| 
@@ -183,6 +198,7 @@ Children Crossing
 | .069				    | Road narrows to the right      							|
 
 Keep right
+
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | .42         			| Turn left ahead   									| 
@@ -192,6 +208,7 @@ Keep right
 | .0034				    | Go straight or right      							|
 
 Keep left
+
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | .75         			| No entry   									| 
@@ -201,6 +218,7 @@ Keep left
 | .0048				    | Priority road      							|
 
 Stop
+
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | .83         			| Keep left   									| 
