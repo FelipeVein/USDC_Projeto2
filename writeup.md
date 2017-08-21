@@ -14,10 +14,10 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./imagens_para_writeup/imagem1.jpg "Data before"
-[image2]: ./imagens_para_writeup/imagem2.jpg "Data after"
-[image3]: ./imagens_para_writeup/imagem3.jpg "Before"
-[image10]: ./imagens_para_writeup/imagem4.jpg "After"
+[image1]: ./imagens_para_writeup/imagem1.JPG "Data before"
+[image2]: ./imagens_para_writeup/imagem2.JPG "Data after"
+[image3]: ./imagens_para_writeup/imagem3.JPG "Before"
+[image10]: ./imagens_para_writeup/imagem4.JPG "After"
 [image4]: ./imagens_para_teste/50.jpg "Traffic Sign 1"
 [image5]: ./imagens_para_teste/criancas.jpg "Traffic Sign 2"
 [image6]: ./imagens_para_teste/criancas2.jpg "Traffic Sign 3"
@@ -56,12 +56,15 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 #### 1. The submission describes the preprocessing techniques used and why these techniques were chosen.
 
-As a first step, I decided to augment the dataset because there are a lot of images of some signs, and few images of others signs. To do that, I used the images that I had, but changing them a little with cv2's GaussianBlur, cv2's equalizeHist and rotating the resulting image by a random angle. Then, I decided to pass all the images through a grayscale.
+As a first step, I decided to augment the dataset because there are a lot of images of some signs, and few images of others signs. To do that, I used the images that I had, but changing them a little with cv2's GaussianBlur, cv2's equalizeHist and rotating the resulting image by a random angle. 
 
 Here is an example of a traffic sign image before and after all this preprocessing techniques.
 
 ![alt text][image3]
 ![alt text][image10]
+
+
+Then, I decided to pass all the images through a grayscale.
 
 As a last step, I normalized the image data because the model learns better with zero mean and unit variance.
 
@@ -143,7 +146,7 @@ If a well known architecture was chosen:
 
 #### 1. The submission includes five new German Traffic signs found on the web, and the images are visualized. Discussion is made as to particular qualities of the images or traffic signs in the images that are of interest, such as whether they would be difficult for the model to classify.
 
-I downloaded 6 brazillian's signs to see if the model would work in my country.
+I've downloaded 6 brazillian's signs to see if my model would work in my country.
 
 ![alt text][image4] ![alt text][image5] ![alt text][image6] 
 ![alt text][image7] ![alt text][image8] ![alt text][image9]
