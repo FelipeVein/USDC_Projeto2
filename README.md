@@ -1,0 +1,3 @@
+# USDC_Projeto2
+
+
