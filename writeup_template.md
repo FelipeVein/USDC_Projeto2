@@ -80,31 +80,42 @@ My final model consisted of the following layers:
 | Convolution 3 - 5x5     	| 1x1 stride, valid padding, outputs 1x1x400 	|
 | RELU	3				|												|
 | Fully connected		| 800 inputs (relu3 + maxpool2) - 400 outputs         									|
+| Dropout		| Keep Prob of 70%        									|
 | Fully connected		| 400 inputs - 120 outputs          									|
+| Dropout		| Keep Prob of 70%        									|
 | Fully connected		| 120 inputs - 84 outputs          									|
+| Dropout		| Keep Prob of 70%        									|
 | Fully connected		| 84 inputs - 43 outputs        									|
-| Softmax				| 43        									|
+| Softmax				| 43 outputs        									|
 |						|												|
 |						|												|
  
 
 
-####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
+#### 3. The submission describes how the model was trained by discussing what optimizer was used, batch size, number of epochs and values for hyperparameters.
 
-To train the model, I used an ....
+To train the model, I used an AdamOptimizer with batch size of 1024 (running on a GTX1060), 40 epochs, learning rate of 0.0009 and dropout of 0.7
 
-####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+#### 4. The submission describes the approach to finding a solution. Accuracy on the validation set is 0.93 or greater.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* training set accuracy of ~95%
+* validation set accuracy of ~95%
+* test set accuracy of 93.4%
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
+- The first architecture chosen was the LeNet with coloured images, because I already had the pipeline for it. 
 * What were some problems with the initial architecture?
+- The test accuracy was 90% at it's best.
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
+- I read some papers in the field ([Pierre Sermanet and Yann LeCun](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf); [Zhe Zhu](http://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Zhu_Traffic-Sign_Detection_and_CVPR_2016_paper.pdf)), but I decided to change the first architecture a bit. I never changed the activation functions, because ReLU is considered the best choice nowadays. 
+- I decided to add dropout layers because the model was overfitting sometimes, even with low epochs. 
 * Which parameters were tuned? How were they adjusted and why?
+- The learning rate was decreased, because the model couldn't get 90%+ accuracy on the validation data.
+- Epoch was increased.
+- Batch size was increased to increase performance.
+- Dropout was incresead, due to the 3 dropout layers. When dropout was lower, the model almost couldn't learn anything.
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
 
 If a well known architecture was chosen:
@@ -113,50 +124,92 @@ If a well known architecture was chosen:
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
  
 
-###Test a Model on New Images
+### Test a Model on New Images
 
-####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+#### 1. The submission includes five new German Traffic signs found on the web, and the images are visualized. Discussion is made as to particular qualities of the images or traffic signs in the images that are of interest, such as whether they would be difficult for the model to classify.
 
-Here are five German traffic signs that I found on the web:
+I downloaded 6 brazillian's signs to see if the model would work in my country.
 
 ![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![alt text][image7] ![alt text][image8] ![alt text][image9]
 
-The first image might be difficult to classify because ...
+The last image might be difficult to classify because "STOP" is written in portuguese: "PARE". If the model had a RGB input, it could classify the sign by the solid red circle around the "PARE". 
 
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+#### 2. The submission documents the performance of the model when tested on the captured images. The performance on the new images is compared to the accuracy results of the test set.
 
 Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| 50 km/h      		| 30 km/h   									| 
+| Children Crossing     			| Dangerous curve to the right 										|
+| Children Crossing					| Double curve											|
+| Keep right	      		| Turn left ahead					 				|
+| Keep left			| No entry      							|
+| Stop			| Keep left      							|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 0 of the 6 traffic signs, which gives an accuracy of 0%. To this dataset, the model was terrible. The best result I got with these 6 images was 33% (2 out of 6).
 
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
-
+#### 3. The top five softmax probabilities of the predictions on the captured images are outputted. The submission discusses how certain or uncertain the model is of its predictions.
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
-
+Despite the 0% accuraccy, the coprrect label appears on all top 5 predictions, as we can see below.
+50 km/h
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| .86         			| 30 km/h   									| 
+| .12     				| *50 km/h*										|
+| .006					| Go straight or left											|
+| .0003	      			| 70 km/h					 				|
+| .00004				    | Roundabout mandatory      							|
 
+Children Crossing
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .81         			| Dangerous curve to the right   									| 
+| .14     				| *Children Crossing* 										|
+| .024					| Pedestrians											|
+| .0055	      			| Traffic Signals					 				|
+| .0049				    | Keep Right      							|
 
-For the second image ... 
+Children Crossing
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .36         			| Double Curve   									| 
+| .26     				| Bicycles crossing 										|
+| .138					| *Children Crossing*											|
+| .135	      			| Beware of ice/snow					 				|
+| .069				    | Road narrows to the right      							|
+
+Keep right
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .42         			| Turn left ahead   									| 
+| .37     				| End of all speed and passing limits 										|
+| .18					| *Keep right*											|
+| .0039	      			| End of no passing					 				|
+| .0034				    | Go straight or right      							|
+
+Keep left
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .75         			| No entry   									| 
+| .13     				| *Keep left* 										|
+| .094					| Turn right ahead											|
+| .0085	      			| Go straight or left					 				|
+| .0048				    | Priority road      							|
+
+Stop
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .83         			| Keep left   									| 
+| .14     				| 70 km/h 										|
+| .0073					| Go straight or left											|
+| .0063	      			| *Stop*					 				|
+| .0033				    | Turn right ahead      							|
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
+#### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
 
 
